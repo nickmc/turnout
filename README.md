@@ -2,6 +2,12 @@ Turnout [![Build Status](https://travis-ci.org/biola/turnout.svg?branch=master)]
 =======
 Turnout is [Rack](http://rack.rubyforge.org/) middleware with a [Ruby on Rails](http://rubyonrails.org) engine that allows you to easily put your app in maintenance mode.
 
+This fork
+=======
+This version is forked to allow whitelisting of user_ids. It adds config option of 'allowed_user_ids'. 
+Any session with this user ud will be allowed to access the site.
+To use this, you will want to whitelist the login page as well.
+
 Features
 ========
 * Easy installation

@@ -5,7 +5,7 @@ module Turnout
   class MaintenanceFile
     attr_reader :path
 
-    SETTINGS = [:reason, :allowed_paths, :allowed_ips, :response_code, :retry_after]
+    SETTINGS = [:reason, :allowed_paths, :allowed_ips, :allowed_user_ids, :response_code, :retry_after]
     attr_reader(*SETTINGS)
 
     def initialize(path)
@@ -13,6 +13,7 @@ module Turnout
       @reason = Turnout.config.default_reason
       @allowed_paths = Turnout.config.default_allowed_paths
       @allowed_ips = Turnout.config.default_allowed_ips
+      @allowed_user_ids = Turnout.config.default_allowed_user_ids
       @response_code = Turnout.config.default_response_code
       @retry_after = Turnout.config.default_retry_after
 
@@ -98,6 +99,10 @@ module Turnout
       ips = ips.to_s.split(',') if ips.is_a? String
 
       @allowed_ips = ips
+    end
+    
+    def allowed_user_ids=(user_ids)
+      @allowed_user_ids = user_ids
     end
 
     def response_code=(code)
