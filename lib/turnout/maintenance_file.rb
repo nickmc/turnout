@@ -36,7 +36,8 @@ module Turnout
       }.to_yaml
     end
 
-    def write
+    def write(reason = nil)
+      @reason = reason if reason.present?
       FileUtils.mkdir_p(dir_path) unless Dir.exist? dir_path
 
       File.open(path, 'w') do |file|
